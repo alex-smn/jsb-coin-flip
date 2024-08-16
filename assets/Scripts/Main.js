@@ -1,10 +1,24 @@
-function callNative(cb) {
-    if(cc.sys.isNative && (cc.sys.os == cc.sys.OS_IOS || cc.sys.os == cc.sys.OS_OSX)) {
-        jsb.reflection.callStaticMethod("AppLogic", "nativeMethod");
-        cb();
+class NativeBridge {
+    static _callback = null;
+
+    static onExecute() {
+        if (this._callback) {
+            this._callback();
+        }
+        this._callback = null;
+    }
+
+    static call(cb) {
+        if(!this._callback && cc.sys.isNative && (cc.sys.os == cc.sys.OS_IOS || cc.sys.os == cc.sys.OS_OSX)) {
+            window.onNativeExecute = this.onExecute.bind(this);
+
+            this._callback = cb;
+
+            jsb.reflection.callStaticMethod("AppLogic", "nativeMethodWithCallbackName:", "onNativeExecute");
+
+        }
     }
 }
-
 
 cc.Class({
     extends: cc.Component,
@@ -16,18 +30,9 @@ cc.Class({
         }
     },
 
-    onLoad: function () {
-
-        window.myStaticMethod = (str) => {
-            // console.log(str)
-            this.label.string = str;
-        }
-    },
-
     buttonHandler: function() {
         this.label.string = "button clicked";
-        callNative(() => {this.label.string = "Native method has started"});
-        // window.myStaticMethod("hello");
-        this.label.string = "Native method is being executed..."
+        NativeBridge.call(() => {this.label.string = "Native method has finished"});
+        this.label.string = "..."
     }
 });
