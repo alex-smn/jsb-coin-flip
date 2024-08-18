@@ -1,4 +1,4 @@
-class NativeBridge {
+export class NativeBridge {
     static _callback = null;
 
     static onExecute() {
@@ -15,24 +15,8 @@ class NativeBridge {
             this._callback = cb;
 
             jsb.reflection.callStaticMethod("AppLogic", "nativeMethodWithCallbackName:", "onNativeExecute");
-
+        } else {
+            console.log("not native");
         }
     }
 }
-
-cc.Class({
-    extends: cc.Component,
-
-    properties: {
-        label: {
-            default: null,
-            type: cc.Label
-        }
-    },
-
-    buttonHandler: function() {
-        this.label.string = "button clicked";
-        NativeBridge.call(() => {this.label.string = "Native method has finished"});
-        this.label.string = "..."
-    }
-});
