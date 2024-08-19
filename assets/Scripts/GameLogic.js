@@ -38,11 +38,11 @@ cc.Class({
     },
 
     watchAd: function() {
+    	this.titleLabel.string = "watching ad...";
         NativeBridge.call(() => {
         	this.titleLabel.string = "Now you can try again!"
         	this.setAdRequired(false);
         });
-        this.titleLabel.string = "watching ad...";
     },
 
     setAdRequired: function(isRequired) {
@@ -57,7 +57,7 @@ cc.Class({
 			this.titleLabel.string = "You won!"
 			this.balance++;
 		} else {
-			this.titleLabel.string = "You lost! Watch an add to try again"
+			this.titleLabel.string = "You lost! Watch an ad to try again"
 			this.setAdRequired(true);
 			this.balance--;
 		}
