@@ -5,7 +5,6 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import <JavaScriptCore/JSObjectRef.h>
 
 @interface ObjectiveCBridge : NSObject
     + (void) callJSFunctionFromObjC:(NSString *) callbackName;

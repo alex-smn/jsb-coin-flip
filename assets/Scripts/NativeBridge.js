@@ -14,7 +14,7 @@ export class NativeBridge {
 
             this._callback = cb;
 
-            jsb.reflection.callStaticMethod("AppLogic", "nativeMethodWithCallbackName:", "onNativeExecute");
+            jsb.reflection.callStaticMethod("AppLogic", "showAdWithCallbackName:", "onNativeExecute");
         } else {
             console.log("not native");
         }

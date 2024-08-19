@@ -10,17 +10,6 @@
 #include <iostream>
 #include "scripting/js-bindings/jswrapper/SeApi.h"
 
-#include "cocos/scripting/js-bindings/manual/jsb_module_register.hpp"
-#include "cocos/scripting/js-bindings/manual/jsb_global.h"
-#include "cocos/scripting/js-bindings/event/EventDispatcher.h"
-#include "cocos/scripting/js-bindings/manual/jsb_classtype.hpp"
-
-//void callJSFunctionFromCpp() {
-//    cocos2d::Application::getInstance()->getScheduler()->performFunctionInCocosThread([](){
-//        se::ScriptEngine::getInstance()->evalString("MyClass.myStaticMethod();");
-//    });
-//}
-
 void callJsFunctionFromCpp(const std::string& jsFunctionName) {
     se::ScriptEngine* se = se::ScriptEngine::getInstance();
     se::AutoHandleScope hs;

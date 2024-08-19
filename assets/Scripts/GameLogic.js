@@ -40,15 +40,15 @@ cc.Class({
     watchAd: function() {
         NativeBridge.call(() => {
         	this.titleLabel.string = "Now you can try again!"
-        	this.balance = 0;
-        	this.balanceLabel.string = this.balance;
-
-        	this.headsButton.interactable = true;
-        	this.tailsButton.interactable = true; // TODO: separate func
-
-        	this.adButton.node.active = false;
+        	this.setAdRequired(false);
         });
         this.titleLabel.string = "watching ad...";
+    },
+
+    setAdRequired: function(isRequired) {
+    	this.headsButton.interactable = !isRequired;
+		this.tailsButton.interactable = !isRequired;
+		this.adButton.node.active = isRequired;
     },
 
     flipCoin: function(event, choise) {
@@ -57,14 +57,8 @@ cc.Class({
 			this.titleLabel.string = "You won!"
 			this.balance++;
 		} else {
-			if (this.balance<=0) {
-				this.titleLabel.string = "You lost! Watch an add to try again"
-				this.headsButton.interactable = false;
-				this.tailsButton.interactable = false;
-				this.adButton.node.active = true;
-			} else {
-				this.titleLabel.string = "You lost!"
-			}
+			this.titleLabel.string = "You lost! Watch an add to try again"
+			this.setAdRequired(true);
 			this.balance--;
 		}
 		this.balanceLabel.string = this.balance;

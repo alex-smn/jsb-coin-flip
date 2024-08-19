@@ -6,8 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import <JavaScriptCore/JSObjectRef.h>
 
 @interface AppLogic : NSObject
-    + (void) nativeMethodWithCallbackName: (NSString *) callback;
+    + (void) showAdWithCallbackName: (NSString *) callback;
 @end

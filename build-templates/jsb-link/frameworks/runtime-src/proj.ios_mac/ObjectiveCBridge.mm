@@ -9,8 +9,6 @@
 
 @implementation ObjectiveCBridge
 + (void)callJSFunctionFromObjC:(NSString *) callbackName {
-//    NSString *param = @"Hello";
-    
     callJsFunctionFromCpp([callbackName UTF8String]);
 }
 

@@ -9,7 +9,7 @@
 #import "ObjectiveCBridge.h"
 
 @implementation AppLogic
-+ (void)nativeMethodWithCallbackName: (NSString *) callback {
++ (void)showAdWithCallbackName: (NSString *) callback {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [NSThread sleepForTimeInterval: 2.0];
         dispatch_async(dispatch_get_main_queue(), ^{
