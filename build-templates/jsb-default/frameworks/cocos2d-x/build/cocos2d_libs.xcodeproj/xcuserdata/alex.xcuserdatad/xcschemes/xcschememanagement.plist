@@ -4,15 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>js-to-objc-desktop.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
-		</dict>
-		<key>js-to-objc-mobile.xcscheme_^#shared#^_</key>
+		<key>libcocos2d Mac.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
+		</dict>
+		<key>libcocos2d iOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
 		</dict>
 	</dict>
 </dict>
